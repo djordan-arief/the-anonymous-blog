@@ -1,0 +1,61 @@
+{%extends 'main.html'%}
+{%block content%}
+
+    <!-- content web page -->
+    {% for post in object_list %}
+    <br>
+    <div class="card container d-flex justify-content-center" style="width: 26rem;">
+        {% if post.photo %}
+        <img src="{{post.photo.url}}" class="card-img-top mt-3" alt="#" style="height: 50%;">
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.content}}</p>
+        </div>
+      </div>
+    {% endfor %}
+    
+
+    <!-- Pagination -->
+    <div class="container-fluid d-flex mt-4 mb-3 justify-content-center pagination">
+        <!-- Previous link -->
+        {% if page_obj.has_previous %}
+        <div class="page-item">
+            <a href="?page={{page_obj.previous_page_number}}" class="page-link">Previous</a>
+        </div>
+        <!-- <div class="page-item">
+            <a href="?page=1" class="page-link">1</a>
+        </div> -->
+        <div class="page-item">
+            <a href="?page={{page_obj.previous_page_number}}" class="page-link">{{page_obj.previous_page_number}}</a>
+        </div>
+        {% else %}
+        <div class="page-item">
+            <a class="page-link disabled">Previous</a>
+        </div>
+        {% endif %}
+        <!-- number of page -->
+        {% if page_obj.number %}
+        <div class="page-item">
+            <a href="" class="page-link active">{{page_obj.number}}</a>
+        </div>
+        {% endif %}
+
+        <!-- next link -->
+        {% if page_obj.has_next %}
+        <div class="page-item">
+            <a href="?page={{page_obj.next_page_number}}" class="page-link">{{page_obj.next_page_number}}</a>
+        </div>
+        <!-- <div class="page-item">
+            <a href="?page={{page_obj.paginator.num_pages}}" class="page-link">{{page_obj.paginator.num_pages}}</a>
+        </div> -->
+        <div class="page-item">
+            <a href="?page={{page_obj.next_page_number}}" class="page-link">Next</a>
+        </div>
+        {% else %}
+        <div class="page-item">
+            <a href="" class="page-link disabled">Next</a>
+        </div>
+        {% endif %}        
+    </div>
+{% endblock content %}

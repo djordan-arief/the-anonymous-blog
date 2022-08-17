@@ -1,0 +1,22 @@
+{%extends 'main.html'%}
+{%block content%}
+{% load crispy_forms_tags %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-12-auto">
+            <h1>Express your thoughts!</h1>
+            <small class="text-$red-500">Note: The creator of this website believes in freedom of speech. In order to fully
+                protect that, the creator decided that each posts will be posted anonymously. Enjoy!!
+            </small>
+        </div>
+    </div>
+    <div class="row">
+        <form method="post" enctype="multipart/form-data" class="mt-3 g-4">
+            {%csrf_token%}
+            {{form|crispy}}
+            <button type="submit" class="btn btn-outline-secondary mt-4">Publish</button>
+        </form>
+    </div> 
+</div>
+{%endblock content%}

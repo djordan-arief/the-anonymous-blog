@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{%block content%}
+<br>
+{% load crispy_forms_tags %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12-auto">
+                <h1>Connect into your account</h1>
+                <small class="text-$red-500">Note: Only the administrator can connect into his account. 
+                    A unique account exists only for the administrator and unauthorized user cannot create an account
+                    but can still publish content. 
+                </small>
+            </div>
+        </div>
+        <div class="row">
+            <form method="post" class="mt-3">
+                {%csrf_token%}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-outline-secondary mt-4">Connect into your account</button>
+            </form>
+        </div> 
+    </div>
+    <!-- <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+    </form> -->
+{%endblock content%}
